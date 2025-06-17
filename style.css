@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+:root {
+    --cor-principal: #00cd9b;
+    --cor-danger: #ef5350;
+    --fundo-app: #1E1E1E;
+    --fundo-geral: #121212;
+    --fundo-card-claro: #E0E0E0;
+    --fundo-componente-dark: #2c2c2e;
+    --fundo-item-dark: #3f3f41;
+    --texto-light: #FFFFFF;
+    --texto-dark: #000000;
+}
+body {
+    background-color: var(--fundo-geral);
+    font-family: 'Poppins', sans-serif; 
+    color: var(--texto-light);
+    margin: 0;
+    padding: 0;
+}
+.desktop-header,
+.extrato-desktop {
+    display: none;
+}
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--fundo-app);
+    display: flex;
+    flex-direction: column;
+}
+.saldo-card {
+    background-color: var(--fundo-card-claro);
+    color: var(--texto-dark);
+    border-radius: 20px;
+}
+.grafico-meta {
+    width: 90px;
+    flex-shrink: 0;
+}
+.progress-donut {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: conic-gradient(var(--cor-principal) 0% 40%, #444 40% 100%);
+    position: relative;
+}
+.progress-donut::before {
+    content: ''; 
+    position: absolute; 
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: var(--fundo-app); 
+}
+.progress-donut span {
+    z-index: 1; 
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.divisor-vertical {
+    width: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+.acoes {
+    background-color: var(--fundo-componente-dark); 
+    border-radius: 25px 25px 0 0;
+    flex-grow: 1; 
+    padding: 2rem; 
+    display: flex;
+    flex-direction: column;
+}
+.acoes .row {
+    flex-grow: 1;
+    align-items: center; 
+}
+.acao-item {
+    width: 75px;
+    height: 75px;
+    background-color: var(--fundo-item-dark);
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer; 
+    transition: all 0.2s ease; 
+}
+.acao-item:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+.acao-item i {
+    font-size: 2rem;
+    color: var(--cor-principal);
+    opacity: 0.9;
+}
+.bottom-nav {
+    background-color: var(--fundo-componente-dark);
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-around;
+    border-top: 1px solid #444;
+    margin-top: auto;
+    border-radius: 0 0 25px 25px;
+}
+.nav-item {
+    color: var(); 
+    padding: 10px 20px;
+    border-radius: 50px; 
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.nav-item:hover {
+    background-color: var(--fundo-item-dark); 
+    color: var(--texto-light); 
+}
+.nav-item.active {
+    background-color: var(--cor-principal); 
+    color: var(--texto-dark); 
+}
+@media (min-width: 768px) {
+    .app-container {
+        max-width: 450px; 
+        min-height: 850px;
+        max-height: 90vh;
+        margin: 2rem auto; 
+        border-radius: 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+        overflow: hidden;
+    }
+}
+@media (min-width: 1024px) {
+    body {
+        background-color: var(--fundo-app)
+    }
+    .desktop-wrapper {
+        width: 100%;
+        min-height: 100vh; 
+        padding: 2rem 4rem;
+        display: grid;
+        grid-template-areas:
+            "header header"
+            "sidebar main-content";
+        grid-template-rows: auto 1fr;
+        grid-template-columns: 420px 1fr;
+        gap: 0 2rem;
+    }
+    .desktop-header {
+        grid-area: header;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .icones-direita {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .desktop-header .desktop-notification-icon {
+        display: block;
+        font-size: 1.25rem;
+        color: var(--texto-light);
+    }
+    .desktop-header .desktop-notification-icon:hover {
+        color: var(--cor-principal);
+        background-color: (black, 0.1);
+    }
+    .desktop-header .desktop-user-icon {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--texto-light);
+    }
+    .app-container {
+        grid-area: sidebar;
+        max-width: none;
+        height: 100%;
+        max-height: none;
+        min-height: auto;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: transparent;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+    .app-container::-webkit-scrollbar {
+        display: none; 
+    }
+    .extrato-desktop {
+        grid-area: main-content;
+        display: block;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+     .extrato-desktop::-webkit-scrollbar {
+        display: none;
+    }
+    .acoes {
+        border-radius: 25px 25px 25px 25px;
+    }
+    .mobile-header,
+    .bottom-nav {display: none; }
+    .extrato-desktop table { width: 100%; border-collapse: collapse; }
+    .extrato-desktop th { text-align: left; font-weight: 400; color: rgba(255, 255, 255, 0.6); padding-bottom: 1rem; font-size: 0.9rem; }
+    .extrato-desktop td { padding: 1rem 0.5rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+    .text-end { text-align: right; }
+    .valor-receita { color: var(--cor-principal); font-weight: 700; }
+    .valor-despesa { color: var(--cor-danger); }
+}
